@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+ALL_STAGED=$(git diff --name-only --cached --diff-filter=d)
+STAGED_FILES_TO_LINT=$(git diff --name-only --cached --diff-filter=d -- "*.ts")
+STAGED_PKGS=$(git diff --name-only --cached --diff-filter=d -- "package.json")
+
+[[ -n $STAGED_FILES_TO_LINT ]] && yarn eslint --fix -f pretty $STAGED_FILES_TO_LINT
+[[ -n $ALL_STAGED ]] && yarn pretty-quick --staged --fix && git add $ALL_STAGED
+
+# If packages are updated, check that versions are aligned
+[[ -n $STAGED_PKGS ]] && yarn prettier-package-json --config .prettierrc --write $STAGED_PKGS || exit 0

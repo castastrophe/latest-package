@@ -1,0 +1,6 @@
+node_modules
+.yarn
+
+# Use prettier-package-json instead of prettier
+# for stronger consistency across packages
+package.json
