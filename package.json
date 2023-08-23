@@ -1,6 +1,6 @@
 {
     "name": "latest-package",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "description": "An interactive command-line tool for upgrading packages in a monorepo to their latest versions.",
     "license": "Apache-2.0",
     "author": "castastrophe <castastrophe@users.noreply.github.com> (https://github.com/castastrophe)",
